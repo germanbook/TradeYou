@@ -1,0 +1,26 @@
+﻿@model TradeYou.Models.Order
+
+@{
+    ViewData["Title"] = "ShoppingCartQuantityEdit";
+}
+
+<h1>View</h1>
+@if (@ViewData["MQ"] == "0")
+{
+
+
+<h3>No more stock!</h3>
+}
+else { 
+<h3>Only @ViewData["MQ"] in stock!</h3>
+}
+
+<div>
+
+
+        
+    <form  method="get" asp-controller="Orders" asp-action="ShoppingCart">
+        <input type="hidden" asp-for="OId" />
+        <input type="submit" value="Back" class="btn btn-primary" />
+    </form>
+</div>

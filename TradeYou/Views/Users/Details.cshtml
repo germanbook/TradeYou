@@ -1,0 +1,56 @@
+﻿@model TradeYou.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UPassword)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UPassword)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UDob)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UDob)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UIsAdmin)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.UIsAdmin == 1)
+            {
+                <p>Admin</p>
+            }
+            else
+            if(Model.UIsAdmin == 0)
+            { 
+                <p>Normal User</p>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.UId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

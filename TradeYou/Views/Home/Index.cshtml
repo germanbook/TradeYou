@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<TradeYou.Models.Product>
+    <!--Search     Bowen 26-09-2021-->
+    <form asp-controller="Home" asp-action="Index" method="get">
+        <div>Kia ora, what can we help you find?</div>        
+        <input type="text" id="search" name="SearchString" /> <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+    <!--********************************************************-->
+    
+    <!--Sort-->
+        <p>
+            <input asp-controller="Home" asp-action="SortZA" method="get" type="submit" value="SortZA" class="btn btn-primary" />
+            <input asp-controller="Home" asp-action="SortAZ" method="get" type="submit" value="SortAZ" class="btn btn-primary" />
+        </p>
+    <!--*********************************************************-->
+    
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PProductname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PImagePath)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PProductname)
+                        </td>
+                        <td>
+                            <img src="@Html.DisplayFor(modelItem => item.PImagePath)" width="250" height="250" />
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="ViewDetails" asp-route-id="@item.PId">More</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<TradeYou.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<script>
+    const { data } = require("jquery");
+
+</script>
+<h1>Orders</h1>
+
+<!--<p>
+    <a asp-action="Create">Create New</a>
+</p>-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OPaymentype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OShippingtype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OOrderumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PIdNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UIdNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                   @if (@item.OPaymentype == 1)
+                   {
+                       <p>Credit Card</p>
+                   }
+                   else
+                   if (@item.OPaymentype == 2)
+                   {
+                       <p>Apple Pay</p>
+                   }
+                </td>
+                <td>
+                    @if (@item.OShippingtype == 1)
+                    {
+                        <p>Pick Up</p>
+                    }
+                    else
+                    if (@item.OShippingtype == 2)
+                    {
+                        <p>Free Shipping</p>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OOrderumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PIdNavigation.PMade)
+                </td>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.UIdNavigation.UName)
+                    <br />
+                    @ViewData[Convert.ToString(item.OId)]
+
+                </td>
+                <td>
+                    <a hidden asp-action="Edit" asp-route-id="@item.OId">Edit</a>
+                    <a hidden asp-action="Details" asp-route-id="@item.OId">Details</a>
+
+                    @if (@ViewData[Convert.ToString(item.OId)] != null)
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.OId">Delete</a>
+                    }
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>

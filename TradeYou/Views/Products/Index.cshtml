@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TradeYou.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Products</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<!--Search     Bowen 26-09-2021-->
+<form asp-controller="Products" asp-action="Index" method="get">
+    <p>
+        Products Name: <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<!--********************************************************-->
+<!--Sort-->
+<form asp-controller="Products" asp-action="SortAZ" method="get">
+    <p>
+        <input type="submit" value="SortAZ" class="btn btn-primary" />
+    </p>
+</form>
+<form asp-controller="Products" asp-action="SortZA" method="get">
+    <p>
+        <input type="submit" value="SortZA" class="btn btn-primary" />
+    </p>
+</form>
+<!--*********************************************************-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PProductname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PMade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PNewUsed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PImagePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PProductname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PMade)
+                </td>
+                <td>
+                    @if (item.PNewUsed == 1)
+                    {
+                        <p>New</p>
+                    }
+                    else
+                    if (item.PNewUsed == 2)
+                    {
+                        <p>Used</p>
+                    }
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.PImagePath)" width="250" height="250" />
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

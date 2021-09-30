@@ -1,0 +1,120 @@
+﻿@model IEnumerable<TradeYou.Models.Order>
+
+@{
+    ViewData["Title"] = "ShoppingCart";
+}
+
+<h1>ShoppingCart</h1>
+
+<script>
+    var orderTotalPrict = 0;
+</script>
+
+
+<form asp-action="CheckOut" method="get">
+    <table class="table">
+
+        <thead>
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PId)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.OQuantity)
+                </th>
+
+                <th>
+                    <label>Price</label>
+                </th>
+
+                <th>
+                    <label>Image</label>
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PIdNavigation.PProductname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OQuantity)
+                    </td>
+                    <td>
+                        <!--Price-->
+                        @Html.DisplayFor(modelItem => item.PIdNavigation.PPrice)
+                        <script>
+                    var quantity = @Html.DisplayFor(modelItem => item.OQuantity)
+                    var totalPrict = @Html.DisplayFor(modelItem => item.PIdNavigation.PPrice) * quantity;
+                    if (quantity > 1) {
+                        document.write("<p> x " + quantity + " = " + totalPrict);
+                        orderTotalPrict += totalPrict;
+                    }
+                    else
+                    {
+                        orderTotalPrict += @Html.DisplayFor(modelItem => item.PIdNavigation.PPrice);
+                    }
+                        </script>
+                    </td>
+                    <td>
+                        <!--Get product's image path from controller by ViewBag-->
+
+                        <select hidden id=@item.PId disabled="disabled" asp-for="@item.PId" class="select select" asp-items="ViewBag.PImagePath"
+                                onfocus="this.defaultIndex = this.selectedIndex;"
+                                onchange="this.selectedIndex = this.defaultIndex;">
+                        </select>
+                        <!--**************************Bowen 25-09-2021****************************************-->
+                    </td>
+                    <td>
+                        <!--Get ImagePath for every product-->
+                        <script>
+                    var mymario = document.getElementById(@item.PId);
+                    var selected_val = mymario.options[mymario.selectedIndex].text;
+                    document.write("<img src="+"'../../"+selected_val+"'"+" width='250' height='250'>");
+                        </script>
+                        <!--**************************Bowen 25-09-2021****************************************-->
+
+                    </td>
+
+                    <td>
+
+                        <a asp-action="ShoppingCartQuantityEdit" asp-route-id="@item.OId">Edit</a> |
+                        <!--<a asp-action="Details" asp-route-id="@item.OId">Details</a>--> |
+                        <a asp-action="ShoppingCartDelete" asp-route-id="@item.OId">Delete</a>
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+        <!-- Total price and checiout-->
+
+        <script type="text/javascript">
+            if (orderTotalPrict > 0) {
+                document.write("<h2>Total:" + orderTotalPrict + " </h2>");
+            }
+
+
+        </script>
+        @if (Model.Count() != 0)
+        {
+            <div class="form-group">
+
+                <input type="submit" value="Check Out" class="btn btn-primary" />
+
+            </div>
+        }
+
+    </table>
+
+
+
+</form>
