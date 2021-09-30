@@ -1,6 +1,9 @@
 ﻿@model TradeYou.Models.User
 <h1>Are you sure you want to logout?</h1>
 <div class="logout">
-     <input type="submit" value="Log out" class="btn btn-danger" asp-action="Logout" asp-controller="Users" method="post" />
-     <input type="submit" value="Cancel" asp-action="Index" asp-controller="Home" />
+    <form asp-controller="Users" method="post">
+        <input type="submit" value="Log out" class="btn btn-danger" asp-action="Logout" />
+
+    </form>
+    <input type="submit" value="Cancel" asp-action="Index" asp-controller="Home" />
 </div>
