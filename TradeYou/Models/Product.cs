@@ -30,7 +30,7 @@ namespace TradeYou.Models
         public int PQuantity { get; set; }
 
         [Required]
-        [Display(Name = "Made")]
+        [Display(Name = "Brand")]
         public string PMade { get; set; }
 
         [Required]
