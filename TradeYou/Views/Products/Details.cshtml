@@ -1,0 +1,61 @@
+﻿@model TradeYou.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PProductname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PProductname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PQuantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PQuantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PMade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PMade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PNewUsed)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.PNewUsed == 1 )
+            {
+                <p>New</p>
+            }
+            else { 
+                <p>Used</p>
+            }
+        </dd>
+        <dt hidden class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PImagePath)
+        </dt>
+        <dd hidden class = "col-sm-10">
+            @Html.DisplayFor(model => model.PImagePath)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

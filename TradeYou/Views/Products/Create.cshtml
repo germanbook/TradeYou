@@ -1,0 +1,92 @@
+﻿@model TradeYou.Models.Product
+
+@{ ViewData["Title"] = "Create"; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Trade You - Weltec's #1 webpage</title>
+    <!--TradeYoufont-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+    
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-info text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-left">
+
+                <div class="mb-md-5 mt-md-4 pb-5">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>Add New Product</h4>
+                            <hr />
+                            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="PProductname" class="control-label"></label>
+                                    <input asp-for="PProductname" class="form-control" />
+                                    <span asp-validation-for="PProductname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PPrice" class="control-label"></label>
+                                    <input asp-for="PPrice" class="form-control" />
+                                    <span asp-validation-for="PPrice" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PQuantity" class="control-label"></label>
+                                    <input asp-for="PQuantity" class="form-control" />
+                                    <span asp-validation-for="PQuantity" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PMade" class="control-label"></label>
+                                    <input asp-for="PMade" class="form-control" />
+                                    <span asp-validation-for="PMade" class="text-danger"></span>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label asp-for="PNewUsed" class="control-label"></label>
+                                    <select asp-for="PNewUsed" name="newused" id="newused">
+                                        <option value="1">New</option>
+                                        <option value="2">Used</option>
+                                    </select>
+                                    <span asp-validation-for="PNewUsed" class="text-danger"></span>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label asp-for="PImagePath" class="control-label"></label>
+                                    <input type="file" name="image" asp-for="PImagePath" class="form-control" />
+                                    <span asp-validation-for="PImagePath" class="text-danger"></span>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-secondary" /> |
+                                    
+                                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

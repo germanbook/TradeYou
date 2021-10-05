@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<TradeYou.Models.Product>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Trade You - Weltec's #1 webpage</title>
+    <!--TradeYoufont-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header class="bg-info py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Kia ora, what can we help you find?</h1>
+            </div>
+            <div class="input-group">
+                <form asp-controller="Home" asp-action="Index" method="get" class="input-group">
+                    <p>
+                        <input type="text" name="SearchString" class="form-control" placeholder="Search by keyword" />
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </p>
+                </form>
+                <!--Search     Bowen 26-09-2021-->
+                <form hidden asp-controller="Home" asp-action="Index" method="get">
+                    <p>
+                        Products Name: <input type="text" name="SearchString" class="form-control" placeholder="Search by keyword" />
+                        <input type="submit" value="Search" class="btn btn-primary" />
+                    </p>
+                </form>
+                <!--********************************************************-->
+                <!--Sort-->
+                <form asp-controller="Home" asp-action="SortAZ" method="get">
+                    <p>
+                        <input type="submit" value="SortAZ" class="btn btn-outline-dark mt-auto" />
+                    </p>
+                </form>
+                <form asp-controller="Home" asp-action="SortZA" method="get">
+                    <p>
+                        <input type="submit" value="SortZA" class="btn btn-outline-dark mt-auto" />
+                    </p>
+                </form>
+                <!--*********************************************************-->
+            </div>
+            
+        </div>
+    </header>
+    
+    
+    
+    
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                @foreach (var item in Model)
+                {
+
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="~/@Html.DisplayFor(modelItem => item.PImagePath)" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">@Html.DisplayFor(modelItem => item.PProductname)</h5>
+                                    <!-- Product price-->
+                                    <h6>$@Html.DisplayFor(modelItem => item.PPrice)</h6>
+                                    <!-- Product used/new-->
+                                    @if (item.PNewUsed == 1)
+                                    {
+                                        <p>New</p>
+                                    }
+                                    else
+                                   if (item.PNewUsed == 2)
+                                    {
+                                        <p>Used</p>
+                                    }
+                                    <!-- Product made-->
+                                    <p>@Html.DisplayFor(modelItem => item.PMade)</p>
+
+                                    <!-- in stock-->
+                                    @if (item.PQuantity > 2)
+                                    {
+                                        <p style="color:green;">@Html.DisplayFor(modelItem => item.PQuantity) available now!</p>
+                                    }
+                                    else
+                                    if (item.PQuantity <= 2)
+                                    { 
+                                        <p style="color:red;">Hurry, only @Html.DisplayFor(modelItem => item.PQuantity) left!</p>
+                                    }
+
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    <form asp-controller="Products" asp-action="AddShoppingCart" asp-route-id="@item.PId" method="post">
+                                        <button class="btn btn-outline-dark mt-auto" type="submit">
+                                            Add to cart
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </section>
+  
+</body>
