@@ -29,7 +29,7 @@ namespace TradeYou.Models
 
         [Required]
         [Display(Name = "E-mail")]
-        [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-‌​]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$", ErrorMessage = "Email address is not valid")]
         public string UEmail { get; set; }
 
         [Required]
