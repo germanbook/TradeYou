@@ -24,6 +24,16 @@ namespace TradeYou.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
+            // Get User ID from Session
+            int tempUserID = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+
+            // Check if the user is logged in
+            // ID is 0, need login before adding products to shopping cart
+            if (tempUserID == 0)
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
             return View(await _context.Users.ToListAsync());
         }
 

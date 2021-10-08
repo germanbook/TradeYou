@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TradeYou.Models.Product>
 
-@{ ViewData["Title"] = "Index"; }
+@{ ViewData["Title"] = "Products"; }
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Trade You - Weltec's #1 webpage</title>
+    <title>Trade You - Products</title>
     <!--TradeYoufont-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <!-- Favicon-->
@@ -29,7 +29,7 @@
                     <p>
                         <input type="text" name="SearchString" class="form-control" placeholder="Search by keyword" />
                         <div class="input-group-append">
-                            <button class="btn btn-secondary" type="submit">
+                            <button id="searchButton" class="btn btn-secondary" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -46,12 +46,12 @@
                 <!--Sort-->
                 <form asp-controller="Products" asp-action="SortAZ" method="get">
                     <p>
-                        <input type="submit" value="SortAZ" class="btn btn-outline-dark mt-auto" />
+                        <input id="sortAZ" type="submit" value="SortAZ" class="btn btn-outline-dark mt-auto" />
                     </p>
                 </form>
                 <form asp-controller="Products" asp-action="SortZA" method="get">
                     <p>
-                        <input type="submit" value="SortZA" class="btn btn-outline-dark mt-auto" />
+                        <input id="sortZA" type="submit" value="SortZA" class="btn btn-outline-dark mt-auto" />
                     </p>
                 </form>
                 <!--*********************************************************-->
@@ -63,7 +63,7 @@
 
     </header>
     <div class="col-sm-7">
-        <a asp-action="Create" class="btn btn-secondary"><span>Add New Product</span></a>
+        <a id="addNewProducts" asp-action="Create" class="btn btn-secondary"><span>Add New Product</span></a>
     </div>
     <!-- Section-->
 
@@ -119,12 +119,12 @@ if (item.PQuantity == 0)
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center">
                     <form asp-controller="Products" asp-action="Edit" asp-route-id="@item.PId" method="get">
-                        <button class="btn btn-outline-dark mt-auto" type="submit">
+                        <button id="edit" class="btn btn-outline-dark mt-auto" type="submit">
                             Edit
                         </button>
                     </form>
                     <form asp-controller="Products" asp-action="Delete" asp-route-id="@item.PId" method="get">
-                        <button class="btn btn-outline-dark mt-auto" type="submit">
+                        <button id="delete" class="btn btn-outline-dark mt-auto" type="submit">
                             Delete
                         </button>
                     </form>

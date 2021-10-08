@@ -25,6 +25,16 @@ namespace TradeYou.Controllers
         // GET: Products
         public async Task<IActionResult> Index(string searchString)
         {
+            // Get User ID from Session
+            int tempUserID = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+
+            // Check if the user is logged in
+            // ID is 0, need login before adding products to shopping cart
+            if (tempUserID == 0)
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
             var products = from p in _context.Products
                             select p;
 
@@ -94,22 +104,32 @@ namespace TradeYou.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PId,PProductname,PPrice,PQuantity,PMade,PNewUsed,PImagePath")] Product product, IFormCollection collection)
         {
+            
             if (ModelState.IsValid)
             {
+
                 // Whether the http request contains a image or not
                 // Upload image to "Image" folder
                 // Save image path to product records as reference
                 // Bowen 24-09-2021
-                IFormFile image = Request.Form.Files.GetFile("image");
+                IFormFile image = Request.Form.Files.GetFile("PImagePath");
                 if (image != null)
                 {
                     String filePath = "ProductsImage/" + DateTime.Now.ToString("yymmssfff") + image.FileName;
-                    FileStream imageStream = new FileStream("wwwroot/"+filePath, FileMode.Create);
+                    FileStream imageStream = new FileStream("wwwroot/" + filePath, FileMode.Create);
                     image.CopyTo(imageStream);
                     imageStream.Close();
                     product.PImagePath = filePath;
+
+
+                }
+                else
+                if (image == null)
+                {
+                    product.PImagePath = "ProductsImage/default.jpg";
                 }
                 //*************************************************
+
 
                 product.PNewUsed = Convert.ToInt32(collection["newused"]);
 
@@ -118,6 +138,8 @@ namespace TradeYou.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
+
+
         }
 
         // GET: Products/Edit/5

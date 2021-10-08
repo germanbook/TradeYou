@@ -38,29 +38,29 @@
                                 <input type="hidden" asp-for="PId" />
                                 <div class="form-group">
                                     <label asp-for="PProductname" class="control-label"></label>
-                                    <input asp-for="PProductname" class="form-control" />
+                                    <input id="name" asp-for="PProductname" class="form-control" />
                                     <span asp-validation-for="PProductname" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="PPrice" class="control-label"></label>
-                                    <input asp-for="PPrice" class="form-control" />
+                                    <input id="price" asp-for="PPrice" class="form-control" />
                                     <span asp-validation-for="PPrice" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="PQuantity" class="control-label"></label>
-                                    <input asp-for="PQuantity" class="form-control" />
+                                    <input id="quantity" asp-for="PQuantity" class="form-control" />
                                     <span asp-validation-for="PQuantity" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="PMade" class="control-label"></label>
-                                    <input asp-for="PMade" class="form-control" />
+                                    <input id="made" asp-for="PMade" class="form-control" />
                                     <span asp-validation-for="PMade" class="text-danger"></span>
                                 </div>
                                 <br />
                                 <div class="form-group">
                                     <label asp-for="PNewUsed" class="control-label"></label>
 
-                                    <select asp-for="PNewUsed" name="newused" id="newused">
+                                    <select id="newUsed" asp-for="PNewUsed" name="newused" id="newused">
                                         <option value="1">New</option>
                                         <option value="2">Used</option>
                                     </select>
@@ -73,7 +73,7 @@
                                     <span asp-validation-for="PImagePath" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Save" class="btn btn-secondary" /> |
+                                    <input id="save" type="submit" value="Save" class="btn btn-secondary" /> |
                                     <a asp-action="Index" class="btn btn-secondary">Cancel</a>
                                 </div>
                             </form>

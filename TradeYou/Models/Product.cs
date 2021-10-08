@@ -37,6 +37,7 @@ namespace TradeYou.Models
         [Display(Name = "Condition")]
         public int PNewUsed { get; set; }
 
+
         [Display(Name = "Image")]
         public string PImagePath { get; set; }
 

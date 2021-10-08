@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TradeYou.Models.Order>
 
-@{ ViewData["Title"] = "Index"; }
+@{ ViewData["Title"] = "Orders"; }
 <script>
     const { data } = require("jquery");
 </script>
@@ -288,7 +288,7 @@
                             <td>
                                 @if (@ViewData[Convert.ToString(item.OId)] != null)
                                 {
-                                    <a asp-action="Delete" asp-route-id="@item.OId" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                                    <a id="delete" asp-action="Delete" asp-route-id="@item.OId" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                                 }
                                 
                             </td>

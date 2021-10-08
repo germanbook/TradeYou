@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Trade You - Weltec's #1 webpage</title>
+    <title>Trade You - Weltec's #1 webpage -  @ViewData["Title"]</title>
     <!--TradeYoufont-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <!-- Favicon-->
@@ -41,11 +41,11 @@
                         @if (@HttpContextAccessor.HttpContext.Session.GetInt32("Admin") == 1)
                         {
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                                <a id="products" class="nav-link active" aria-current="page" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                                <a id="users" class="nav-link active" aria-current="page" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
                             </li>
 }
 
@@ -74,17 +74,17 @@
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">My Trade You</a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="UserProfileEdit" >
+                                            <a id="profile" class="dropdown-item" asp-area="" asp-controller="Users" asp-action="UserProfileEdit" >
                                                 <i class="bi bi-person-circle"></i> User Profile</a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider" />
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="Index">My Order</a>
+                                            <a id="myOrder" class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="Index">My Order</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="Logout">Log out</a>
+                                            <a id="userLogout" class="dropdown-item" asp-area="" asp-controller="Users" asp-action="Logout">Log out</a>
                                         </li>
                                     </ul>
                             </li>
@@ -100,14 +100,14 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                                <a id="login" class="nav-link active" aria-current="page" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
                             </li>
                         }
                     </ul>
                     @if (@HttpContextAccessor.HttpContext.Session.GetInt32("UserId") != null)
                     {
                         <form class="d-flex" method="get" asp-area="" asp-controller="Orders" asp-action="ShoppingCart">
-                            <button class="btn btn-outline-dark" type="submit">
+                            <button id="shoppingCart" class="btn btn-outline-dark" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 Cart
                                 <span class="badge bg-dark text-white ms-1 rounded-pill">@HttpContextAccessor.HttpContext.Session.GetInt32("ShoppingCartCount")</span> <!--Shopping cart product number-->

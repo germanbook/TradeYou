@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TradeYou.Models.User>
 
-@{ ViewData["Title"] = "Index"; }
+@{ ViewData["Title"] = "Users"; }
 
 <script>
     var listIndex = 0;
@@ -232,7 +232,7 @@
                         <h2>User <b>Management</b></h2>
                     </div>
                     <div class="col-sm-7">
-                        <a asp-action="Create" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
+                        <a id="addNewUser" asp-action="Create" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
                     </div>
                 </div>
             </div>
@@ -268,8 +268,8 @@
                                 <td><span class="status text-success">&bull;</span> User</td>
                             }
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.UId" class="settings" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a asp-action="Delete" asp-route-id="@item.UId" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                                <a id="edit" asp-action="Edit" asp-route-id="@item.UId" class="settings" title="edit" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                <a id="delete" asp-action="Delete" asp-route-id="@item.UId" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                                 <a hidden asp-action="Details" asp-route-id="@item.UId">Details</a>
                             </td>
                         </tr>

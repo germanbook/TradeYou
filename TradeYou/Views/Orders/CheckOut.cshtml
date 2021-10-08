@@ -239,7 +239,7 @@
                                 <td>
                                     <div class="dropdown">
 
-                                        <select class="btn btn-secondary dropdown-toggle" asp-for="OPaymentype" name="paymentype" id="paymenttype">
+                                        <select id="payment" class="btn btn-secondary dropdown-toggle" asp-for="OPaymentype" name="paymentype" id="paymenttype">
                                             <option value="1">Credit Card</option>
                                             <option value="2">Apple Pay</option>
                                         </select>
@@ -251,7 +251,7 @@
                                 <td><b>Shipping type</b></td>
                                 <td>
                                     <div class="dropdown">
-                                        <select class="btn btn-secondary dropdown-toggle" asp-for="OShippingtype" name="shippingtype" id="shippingtype">
+                                        <select id="shipping" class="btn btn-secondary dropdown-toggle" asp-for="OShippingtype" name="shippingtype" id="shippingtype">
                                             <option value="1">Pick Up</option>
                                             <option value="2">Free Shipping</option>
                                         </select>
@@ -263,8 +263,8 @@
 
                     </table>
                     <div>
-                        <input type="submit" value="Save" class="btn btn-secondary" /> |
-                        <a asp-action="ShoppingCart" class="btn btn-secondary">Cancel</a>
+                        <input id="save" type="submit" value="Save" class="btn btn-secondary" /> |
+                        <a id="cancel" asp-action="ShoppingCart" class="btn btn-secondary">Cancel</a>
 
                     </div>
                 </form>

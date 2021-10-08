@@ -30,7 +30,7 @@
                     <p>
                         <input type="text" name="SearchString" class="form-control" placeholder="Search by keyword" />
                         <div class="input-group-append">
-                            <button class="btn btn-secondary" type="submit">
+                            <button id="searchButton" class="btn btn-secondary" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -47,12 +47,12 @@
                 <!--Sort-->
                 <form asp-controller="Home" asp-action="SortAZ" method="get">
                     <p>
-                        <input type="submit" value="SortAZ" class="btn btn-outline-dark mt-auto" />
+                        <input id="sortAZ" type="submit" value="SortAZ" class="btn btn-outline-dark mt-auto" />
                     </p>
                 </form>
                 <form asp-controller="Home" asp-action="SortZA" method="get">
                     <p>
-                        <input type="submit" value="SortZA" class="btn btn-outline-dark mt-auto" />
+                        <input id ="sortZA" type="submit" value="SortZA" class="btn btn-outline-dark mt-auto" />
                     </p>
                 </form>
                 <!--*********************************************************-->
@@ -111,7 +111,7 @@
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
                                     <form asp-controller="Products" asp-action="AddShoppingCart" asp-route-id="@item.PId" method="post">
-                                        <button class="btn btn-outline-dark mt-auto" type="submit">
+                                        <button id="addToCart" class="btn btn-outline-dark mt-auto" type="submit">
                                             Add to cart
                                         </button>
                                     </form>
