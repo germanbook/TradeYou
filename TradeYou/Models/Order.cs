@@ -22,6 +22,7 @@ namespace TradeYou.Models
         public DateTime? OOrderumber { get; set; }
 
         [Display(Name = "Quantity")]
+        [Range(0, int.MaxValue, ErrorMessage = "Quantity cannot be negative!")]
         public int OQuantity { get; set; }
 
         [Display(Name = "Product")]
