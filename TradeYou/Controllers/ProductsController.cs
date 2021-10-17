@@ -220,7 +220,6 @@ namespace TradeYou.Controllers
                 return View("ProductDeleteError");
             }
 
-
             return View(product);
         }
 

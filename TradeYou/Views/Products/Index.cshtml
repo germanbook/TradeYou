@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<TradeYou.Models.Product>
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{ ViewData["Title"] = "Products"; }
 
@@ -26,14 +28,14 @@
         <div class="container px-4 px-lg-5 my-5">
             <div class="input-group">
                 <form asp-controller="Products" asp-action="Index" method="get" class="input-group">
-                    <p>
+                    
                         <input type="text" name="SearchString" class="form-control" placeholder="Search by keyword" />
                         <div class="input-group-append">
                             <button id="searchButton" class="btn btn-secondary" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
-                    </p>
+                    
                 </form>
                 <!--Search     Bowen 26-09-2021-->
                 <form hidden asp-controller="Products" asp-action="Index" method="get">

@@ -42,5 +42,15 @@ namespace TradeYou.Models
         public string PImagePath { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public Product(int id, string name, double price, int quantity, string made, int newUsed)
+        {
+            PId = id;
+            PProductname = name;
+            PPrice = price;
+            PQuantity = quantity;
+            PMade = made;
+            PNewUsed = newUsed;
+        }
     }
 }

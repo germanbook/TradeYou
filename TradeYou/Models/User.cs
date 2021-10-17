@@ -37,5 +37,15 @@ namespace TradeYou.Models
         public int UIsAdmin { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public User(int id, string name, string passwrod, DateTime dob, string email, int accountType)
+        {
+            UId = id;
+            UName = name;
+            UPassword = passwrod;
+            UDob = dob;
+            UEmail = email;
+            UIsAdmin = accountType;
+        }
     }
 }

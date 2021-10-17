@@ -8,6 +8,10 @@ namespace TradeYou.Models
 {
     public partial class Order
     {
+        public Order()
+        { 
+        }
+
         public int OId { get; set; }
         public int UId { get; set; }
         public int PId { get; set; }
@@ -30,5 +34,16 @@ namespace TradeYou.Models
 
         [Display(Name = "User")]
         public virtual User UIdNavigation { get; set; }
+
+        public Order(int oid, int uid, int pid, int payment, int shipping, DateTime onumber, int quantity)
+        {
+            OId = oid;
+            UId = uid;
+            PId = pid;
+            OPaymentype = payment;
+            OShippingtype = shipping;
+            OOrderumber = onumber;
+            OQuantity = quantity;
+        }
     }
 }

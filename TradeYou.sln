@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeYou", "TradeYou\TradeYou.csproj", "{E4CB4593-07C4-4F54-842B-BD49A8345FF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeYouAutomationTest", "TradeYouAutomationTest\TradeYouAutomationTest.csproj", "{5F0680D5-D3BA-4619-8418-A81A06A5BE67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeYouAutomationTest", "TradeYouAutomationTest\TradeYouAutomationTest.csproj", "{5F0680D5-D3BA-4619-8418-A81A06A5BE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeYouUnitTest", "TradeYouUnitTest\TradeYouUnitTest.csproj", "{65FA847F-E8A2-48D0-B0F8-6EA2DF60A641}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5F0680D5-D3BA-4619-8418-A81A06A5BE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F0680D5-D3BA-4619-8418-A81A06A5BE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F0680D5-D3BA-4619-8418-A81A06A5BE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65FA847F-E8A2-48D0-B0F8-6EA2DF60A641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65FA847F-E8A2-48D0-B0F8-6EA2DF60A641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65FA847F-E8A2-48D0-B0F8-6EA2DF60A641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65FA847F-E8A2-48D0-B0F8-6EA2DF60A641}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

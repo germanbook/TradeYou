@@ -37,6 +37,12 @@
                             <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
+                        <!--Unit Test-->
+                        <li hidden class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="ProductsUnitTest" asp-action="Details">OrdersUnitTest</a>
+                        </li>
+                        <!--Unit Test-->
+
 
                         @if (@HttpContextAccessor.HttpContext.Session.GetInt32("Admin") == 1)
                         {
@@ -47,7 +53,7 @@
                             <li class="nav-item">
                                 <a id="users" class="nav-link active" aria-current="page" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
                             </li>
-}
+                        }
 
 
                         @if (@HttpContextAccessor.HttpContext.Session.GetInt32("UserId") != null)
@@ -72,21 +78,22 @@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">My Trade You</a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li>
-                                            <a id="profile" class="dropdown-item" asp-area="" asp-controller="Users" asp-action="UserProfileEdit" >
-                                                <i class="bi bi-person-circle"></i> User Profile</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider" />
-                                        </li>
-                                        <li>
-                                            <a id="myOrder" class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="Index">My Order</a>
-                                        </li>
-                                        <li>
-                                            <a id="userLogout" class="dropdown-item" asp-area="" asp-controller="Users" asp-action="Logout">Log out</a>
-                                        </li>
-                                    </ul>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a id="profile" class="dropdown-item" asp-area="" asp-controller="Users" asp-action="UserProfileEdit">
+                                            <i class="bi bi-person-circle"></i> User Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <a id="myOrder" class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="Index">My Order</a>
+                                    </li>
+                                    <li>
+                                        <a id="userLogout" class="dropdown-item" asp-area="" asp-controller="Users" asp-action="Logout">Log out</a>
+                                    </li>
+                                </ul>
                             </li>
 
 
