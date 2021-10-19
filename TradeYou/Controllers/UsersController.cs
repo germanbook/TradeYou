@@ -22,6 +22,7 @@ namespace TradeYou.Controllers
         }
 
         // GET: Users
+        // Get all users
         public async Task<IActionResult> Index()
         {
             // Get User ID from Session
@@ -194,6 +195,10 @@ namespace TradeYou.Controllers
 
         // User login
         // Bowen 24-09-2-21
+        /**
+         * After a successful login, the user ID and the admin's mark
+         * will be stored in the session.
+         */
         [HttpGet]
         public ActionResult Login()
         {
@@ -272,7 +277,8 @@ namespace TradeYou.Controllers
             return View(user);
         }
 
-
+        // User Profile edit
+        // Get
 
         [HttpGet]
         public async Task<IActionResult> UserProfileEdit()
@@ -343,6 +349,10 @@ namespace TradeYou.Controllers
             return View();
         }
 
+
+        // User logout
+        // Clear the session after the user logs out
+        // Post
         [HttpPost]
         public ActionResult Logout(IFormCollection collection)
         {

@@ -20,6 +20,10 @@ namespace TradeYou.Controllers
         }
 
         // GET: Orders
+        // Get orders for uers
+        // get all orders for admin
+        // normal user's own orders to himself
+
         public async Task<IActionResult> Index()
         {
             // Get User ID from Session
@@ -238,8 +242,12 @@ namespace TradeYou.Controllers
 
         // Shopping Cart
         // Bowen 25-09-2021
-
         // View shopping cart
+        /**
+         * Use order number to determine "order" and "shopping cart item". 
+         * The unpaid "order" only exists in the shopping cart.
+         * and shopping cart item will become the order after payment.
+         */
         [HttpGet]
         public async Task<IActionResult> ShoppingCart()
         {
@@ -296,6 +304,13 @@ namespace TradeYou.Controllers
             return View(order);
         }
 
+        // Shopping Cart Delete
+        // Post
+        /**
+         * If delete an item in the shopping cart
+         * the corresponding quantity of products 
+         * will be returned to products stock
+         */
         [HttpPost]
         public async Task<IActionResult> ShoppingCartDelete(int id)
         {
@@ -370,6 +385,12 @@ namespace TradeYou.Controllers
             return View(order);
         }
 
+        // Shopping Cart edit product's quantity
+        // Post
+        /**
+         * The change of item quantity in the shopping cart will affect the products stock.
+         * If change the item quantity to 0, the item will be removed from shopping cart automatically.
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ShoppingCartQuantityEdit(int id, Order order)
@@ -479,7 +500,8 @@ namespace TradeYou.Controllers
             return View(order);
         }
 
-        // Check out
+        // Shopping Cart check out
+        // Get
         [HttpGet]
         public async Task<IActionResult> CheckOut()
         {
@@ -509,6 +531,12 @@ namespace TradeYou.Controllers
             return View();
         }
 
+        // Shopping Cart check out
+        // Post
+        /**
+         * The order number will be generated when checking out.
+         * items will become the order and show in the Orders module
+         */
         [HttpPost]
         public async Task<IActionResult> CheckOut(int id, Order order, IFormCollection collection)
         {
@@ -520,9 +548,6 @@ namespace TradeYou.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
-
-            //int paymentType = Convert.ToInt32(Request["SimpleProp1"]);
-            //int shippingType = Request.Form.Files.GetFile("image");
 
             var shoppingCarOrders = _context.Orders.FromSqlRaw("SELECT *" +
                 "                                               FROM [ORDER]" +

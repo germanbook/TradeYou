@@ -26,6 +26,7 @@ namespace TradeYou.Controllers
 
 
         // GET: Products
+        // Get all products or searched products
         public async Task<IActionResult> Index(string searchString)
         {
             
@@ -42,6 +43,7 @@ namespace TradeYou.Controllers
         }
 
         // Sort A-Z
+        // Sort products in ascending order
         public async Task<IActionResult> SortAZ()
         {
             var products = (from p in _context.Products
@@ -52,6 +54,7 @@ namespace TradeYou.Controllers
         }
 
         // Sort Z-A
+        // Sort products in descending order
         public async Task<IActionResult> SortZA()
         {
             var products = (from p in _context.Products

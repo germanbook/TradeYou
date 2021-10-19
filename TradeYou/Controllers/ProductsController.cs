@@ -23,6 +23,7 @@ namespace TradeYou.Controllers
         }
 
         // GET: Products
+        // Get all products or searched products
         public async Task<IActionResult> Index(string searchString)
         {
             // Get User ID from Session
@@ -47,6 +48,7 @@ namespace TradeYou.Controllers
         }
 
         // Sort A-Z
+        // Sort products in ascending order
         // Bowen 29-09-2021
         [HttpGet]
         public async Task<IActionResult> SortAZ()
@@ -61,6 +63,7 @@ namespace TradeYou.Controllers
         }
 
         // Sort Z-A
+        // Sort products in descending order
         // Bowen 29-09-2021
         [HttpGet]
         public async Task<IActionResult> SortZA()
@@ -241,7 +244,10 @@ namespace TradeYou.Controllers
 
         // Add product to shopping cart
         // Bowen 24-09-2021
-
+        /**
+         * Products added to the shopping cart 
+         * will automatically reduce the products stock
+         */
         [HttpPost]
         public async Task<IActionResult> AddShoppingCart(int id)
         {
@@ -275,12 +281,6 @@ namespace TradeYou.Controllers
             // If exist
             if (shoppingList.Length != 0)
             {
-                // Increse the O_Quantity
-                //_context.Orders.FromSqlRaw("UPDATE [ORDER]" +
-                //    "                       SET O_Quantity = 3" +
-                //    "                       WHERE U_Id = " + order.UId + " " +
-                //    "                       AND P_Id = " + order.PId + " " +
-                //   "                       AND O_Orderumber IS NULL");
 
                 order = shoppingList.First();
                 order.OQuantity++;
